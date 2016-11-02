@@ -16,6 +16,4 @@ sudo ln -s ~/zk-migration-test /zk-migration-test
 docker build -t hdf1-2 .
 
 # Run the docker image in a container named hdf1-2
-docker run -ti --rm -p 8080:8080 -p 2181:2181 -v
-
-~/zk-migration-test/testfiles:/zk-migration-test/testfiles --name hdf1-2 hdf1-2
+docker run -ti --rm -p 8080:8080 -p 2181:2181 -v ~/zk-migration-test/testfiles:/zk-migration-test/testfiles --name hdf1-2 hdf1-2
