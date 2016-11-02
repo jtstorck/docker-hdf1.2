@@ -42,7 +42,7 @@ expose 8080
 expose 2181
 
 # create test dir and generate test data
-run mkdir -p $testdir/testfiles
-run /root/setup.sh $testdir/testfiles
+#run mkdir -p $testdir/testfiles
+#run /root/setup.sh $testdir/testfiles
 
 entrypoint  ["/root/start.sh"]
