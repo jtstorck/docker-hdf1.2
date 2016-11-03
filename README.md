@@ -10,7 +10,7 @@ mkdir ~/testfiles
 
 sudo mkdir -p /zk-migration-test/testfiles
 
-sudo chown -R <user>:<group> /zk-migration-test
+sudo chown -R *user*:*group* /zk-migration-test
 
 ./setup.sh ~/testfiles
 
