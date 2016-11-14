@@ -13,8 +13,7 @@ add setup.sh /root/
 run chmod +x /root/setup.sh
 
 # add flow to NCM and nifi node
-add flow.xml.gz /root/
-run gunzip -c /root/flow.xml.gz > /root/flow.xml
+add flow.xml /root/
 run tar -C /root -cvf /HDF-1.2.0.0/ncm/conf/flow.tar flow.xml
 
 workdir /HDF-1.2.0.0

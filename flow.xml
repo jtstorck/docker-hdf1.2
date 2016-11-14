@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flowController>
+  <maxTimerDrivenThreadCount>10</maxTimerDrivenThreadCount>
+  <maxEventDrivenThreadCount>5</maxEventDrivenThreadCount>
+  <rootGroup>
+    <id>77b15f7d-10cf-447b-981b-bb785e5d6cc7</id>
+    <name>NiFi Flow</name>
+    <position x="0.0" y="0.0"/>
+    <comment/>
+    <processor>
+      <id>dd18a093-e430-4c9b-9b64-60af68322c43</id>
+      <name>FetchFile</name>
+      <position x="164.0" y="288.0"/>
+      <styles/>
+      <comment/>
+      <class>org.apache.nifi.processors.standard.FetchFile</class>
+      <maxConcurrentTasks>1</maxConcurrentTasks>
+      <schedulingPeriod>0 sec</schedulingPeriod>
+      <penalizationPeriod>30 sec</penalizationPeriod>
+      <yieldPeriod>1 sec</yieldPeriod>
+      <bulletinLevel>WARN</bulletinLevel>
+      <lossTolerant>false</lossTolerant>
+      <scheduledState>STOPPED</scheduledState>
+      <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+      <runDurationNanos>0</runDurationNanos>
+      <property>
+        <name>File to Fetch</name>
+        <value>${absolute.path}/${filename}</value>
+      </property>
+      <property>
+        <name>Completion Strategy</name>
+        <value>None</value>
+      </property>
+      <property>
+        <name>Move Destination Directory</name>
+      </property>
+      <property>
+        <name>Move Conflict Strategy</name>
+        <value>Rename</value>
+      </property>
+      <autoTerminatedRelationship>not.found</autoTerminatedRelationship>
+      <autoTerminatedRelationship>failure</autoTerminatedRelationship>
+      <autoTerminatedRelationship>permission.denied</autoTerminatedRelationship>
+    </processor>
+    <processor>
+      <id>ef0b88b1-e376-4782-a374-bdba7c77997b</id>
+      <name>ControlRate</name>
+      <position x="163.0" y="126.0"/>
+      <styles/>
+      <comment/>
+      <class>org.apache.nifi.processors.standard.ControlRate</class>
+      <maxConcurrentTasks>1</maxConcurrentTasks>
+      <schedulingPeriod>0 sec</schedulingPeriod>
+      <penalizationPeriod>30 sec</penalizationPeriod>
+      <yieldPeriod>1 sec</yieldPeriod>
+      <bulletinLevel>WARN</bulletinLevel>
+      <lossTolerant>false</lossTolerant>
+      <scheduledState>STOPPED</scheduledState>
+      <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+      <runDurationNanos>0</runDurationNanos>
+      <property>
+        <name>Rate Control Criteria</name>
+        <value>flowfile count</value>
+      </property>
+      <property>
+        <name>Maximum Rate</name>
+        <value>1</value>
+      </property>
+      <property>
+        <name>Rate Controlled Attribute</name>
+      </property>
+      <property>
+        <name>Time Duration</name>
+        <value>10 secs</value>
+      </property>
+      <property>
+        <name>Grouping Attribute</name>
+      </property>
+      <autoTerminatedRelationship>failure</autoTerminatedRelationship>
+    </processor>
+    <processor>
+      <id>0156501a-5d22-44b7-9062-395e29f05944</id>
+      <name>ListFile</name>
+      <position x="162.0" y="-37.0"/>
+      <styles/>
+      <comment/>
+      <class>org.apache.nifi.processors.standard.ListFile</class>
+      <maxConcurrentTasks>1</maxConcurrentTasks>
+      <schedulingPeriod>0 sec</schedulingPeriod>
+      <penalizationPeriod>30 sec</penalizationPeriod>
+      <yieldPeriod>1 sec</yieldPeriod>
+      <bulletinLevel>WARN</bulletinLevel>
+      <lossTolerant>false</lossTolerant>
+      <scheduledState>STOPPED</scheduledState>
+      <schedulingStrategy>PRIMARY_NODE_ONLY</schedulingStrategy>
+      <runDurationNanos>0</runDurationNanos>
+      <property>
+        <name>Input Directory</name>
+	<value>${'user.home'}/zk-migration-test/testfiles</value>
+      </property>
+      <property>
+        <name>Recurse Subdirectories</name>
+        <value>false</value>
+      </property>
+      <property>
+        <name>Input Directory Location</name>
+        <value>Remote</value>
+      </property>
+      <property>
+        <name>File Filter</name>
+        <value>[^\.].*</value>
+      </property>
+      <property>
+        <name>Path Filter</name>
+      </property>
+      <property>
+        <name>Minimum File Age</name>
+        <value>0 sec</value>
+      </property>
+      <property>
+        <name>Maximum File Age</name>
+      </property>
+      <property>
+        <name>Minimum File Size</name>
+        <value>0 B</value>
+      </property>
+      <property>
+        <name>Maximum File Size</name>
+      </property>
+      <property>
+        <name>Ignore Hidden Files</name>
+        <value>true</value>
+      </property>
+    </processor>
+    <processor>
+      <id>cbb6f889-ffe1-4673-82ff-40e419d1b487</id>
+      <name>PutFile</name>
+      <position x="161.0" y="451.0"/>
+      <styles/>
+      <comment/>
+      <class>org.apache.nifi.processors.standard.PutFile</class>
+      <maxConcurrentTasks>1</maxConcurrentTasks>
+      <schedulingPeriod>0 sec</schedulingPeriod>
+      <penalizationPeriod>30 sec</penalizationPeriod>
+      <yieldPeriod>1 sec</yieldPeriod>
+      <bulletinLevel>WARN</bulletinLevel>
+      <lossTolerant>false</lossTolerant>
+      <scheduledState>STOPPED</scheduledState>
+      <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+      <runDurationNanos>0</runDurationNanos>
+      <property>
+        <name>Directory</name>
+	<value>${'user.home'}/zk-migration-test/copiedfiles</value>
+      </property>
+      <property>
+        <name>Conflict Resolution Strategy</name>
+        <value>fail</value>
+      </property>
+      <property>
+        <name>Create Missing Directories</name>
+        <value>true</value>
+      </property>
+      <property>
+        <name>Maximum File Count</name>
+      </property>
+      <property>
+        <name>Last Modified Time</name>
+      </property>
+      <property>
+        <name>Permissions</name>
+      </property>
+      <property>
+        <name>Owner</name>
+      </property>
+      <property>
+        <name>Group</name>
+      </property>
+      <autoTerminatedRelationship>failure</autoTerminatedRelationship>
+      <autoTerminatedRelationship>success</autoTerminatedRelationship>
+    </processor>
+    <connection>
+      <id>5ab8aa27-4250-4ebf-a93a-1af5eb67e84c</id>
+      <name/>
+      <bendPoints/>
+      <labelIndex>1</labelIndex>
+      <zIndex>0</zIndex>
+      <sourceId>0156501a-5d22-44b7-9062-395e29f05944</sourceId>
+      <sourceGroupId>77b15f7d-10cf-447b-981b-bb785e5d6cc7</sourceGroupId>
+      <sourceType>PROCESSOR</sourceType>
+      <destinationId>ef0b88b1-e376-4782-a374-bdba7c77997b</destinationId>
+      <destinationGroupId>77b15f7d-10cf-447b-981b-bb785e5d6cc7</destinationGroupId>
+      <destinationType>PROCESSOR</destinationType>
+      <relationship>success</relationship>
+      <maxWorkQueueSize>0</maxWorkQueueSize>
+      <maxWorkQueueDataSize>0 MB</maxWorkQueueDataSize>
+      <flowFileExpiration>0 sec</flowFileExpiration>
+    </connection>
+    <connection>
+      <id>01225489-1417-4593-8759-cefa61901cc8</id>
+      <name/>
+      <bendPoints/>
+      <labelIndex>1</labelIndex>
+      <zIndex>0</zIndex>
+      <sourceId>dd18a093-e430-4c9b-9b64-60af68322c43</sourceId>
+      <sourceGroupId>77b15f7d-10cf-447b-981b-bb785e5d6cc7</sourceGroupId>
+      <sourceType>PROCESSOR</sourceType>
+      <destinationId>cbb6f889-ffe1-4673-82ff-40e419d1b487</destinationId>
+      <destinationGroupId>77b15f7d-10cf-447b-981b-bb785e5d6cc7</destinationGroupId>
+      <destinationType>PROCESSOR</destinationType>
+      <relationship>success</relationship>
+      <maxWorkQueueSize>0</maxWorkQueueSize>
+      <maxWorkQueueDataSize>0 MB</maxWorkQueueDataSize>
+      <flowFileExpiration>0 sec</flowFileExpiration>
+    </connection>
+    <connection>
+      <id>be5d8e6c-dab9-45ee-b21b-1a0887759996</id>
+      <name/>
+      <bendPoints/>
+      <labelIndex>1</labelIndex>
+      <zIndex>0</zIndex>
+      <sourceId>ef0b88b1-e376-4782-a374-bdba7c77997b</sourceId>
+      <sourceGroupId>77b15f7d-10cf-447b-981b-bb785e5d6cc7</sourceGroupId>
+      <sourceType>PROCESSOR</sourceType>
+      <destinationId>dd18a093-e430-4c9b-9b64-60af68322c43</destinationId>
+      <destinationGroupId>77b15f7d-10cf-447b-981b-bb785e5d6cc7</destinationGroupId>
+      <destinationType>PROCESSOR</destinationType>
+      <relationship>success</relationship>
+      <maxWorkQueueSize>0</maxWorkQueueSize>
+      <maxWorkQueueDataSize>0 MB</maxWorkQueueDataSize>
+      <flowFileExpiration>0 sec</flowFileExpiration>
+    </connection>
+  </rootGroup>
+  <controllerServices/>
+  <reportingTasks/>
+</flowController>
