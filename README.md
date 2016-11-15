@@ -14,4 +14,4 @@ mkdir -p ~/zk-migration-test/testfiles
 docker build -t hdf1-2 .
 
 # Run the docker image in a container **hdf1-2**
-docker run -ti --rm -p 8080:8080 -p 2181:2181 -v ~/zk-migration-test/testfiles:/root/zk-migration-test/testfiles -v /dev/urandom:/dev/random --name hdf1-2 hdf1-2
+docker run -ti -p 8080:8080 -p 2181:2181 -v ~/zk-migration-test/testfiles:/root/zk-migration-test/testfiles -v /dev/urandom:/dev/random --name hdf1-2 hdf1-2
