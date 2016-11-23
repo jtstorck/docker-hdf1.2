@@ -6,7 +6,7 @@ eval $(docker-machine env hdf1-2)
 # Perform some setup
 cd to dir with Dockerfile
 
-./setup.sh ~/zk-migration-test/testfiles
+./setup.sh ~/zk-migration-test
 
 # Build the docker image
 #### add `--build-arg user=<username>` to change default user "nifi"
