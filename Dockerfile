@@ -8,7 +8,7 @@ arg testdir=/zk-migration-test
 arg user=nifi
 
 # set up the user that will run nifi
-run useradd --shell /bin/bash -m nifi
+run useradd --shell /bin/bash -m $user
 
 run curl -O $nifi
 run tar -xzf /HDF-1.2.0.0-91.tar.gz -C /
